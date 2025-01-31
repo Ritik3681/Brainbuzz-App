@@ -48,6 +48,7 @@ class ChatFragment : Fragment() {
         val btnSumbit=view.findViewById<Button>(R.id.sender)
         val apiResult=view.findViewById<TextView>(R.id.ApiResult)
         val progressBar=view.findViewById<ProgressBar>(R.id.progressBar)
+        val progressBar1=view.findViewById<ProgressBar>(R.id.progressBar)
 
 //        btnSumbit.setOnClickListener{
 //            val result=userText.text.toString()
