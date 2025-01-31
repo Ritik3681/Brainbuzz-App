@@ -55,7 +55,7 @@ class ChatFragment : Fragment() {
 //
 //            val generativeMOdel= GenerativeModel(
 //                modelName="gemini-pro",
-//               "
+//                apiKey= "AIzaSyD3z4jYXHVFKR2Tcx57-dwcd0UUGwbxn-E"
 //            )
 //            runBlocking {
 //                val response=generativeMOdel.generateContent(result)
@@ -74,7 +74,7 @@ class ChatFragment : Fragment() {
 
                     val generativeModel = GenerativeModel(
                         modelName = "gemini-pro",
-                        apiKey = ""
+                        apiKey = "AIzaSyD3z4jYXHVFKR2Tcx57-dwcd0UUGwbxn-E"
                     )
 
                     // Perform the API call
