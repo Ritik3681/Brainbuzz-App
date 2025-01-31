@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Aptitude</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Other theme attributes -->
+        <item name="android:statusBarColor">#202038</item>
+        <item name="android:windowLightStatusBar">true</item> <!-- For light icons -->
+    </style>
+</resources>

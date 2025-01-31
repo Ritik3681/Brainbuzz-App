@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ChatFragment">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        android:background="#4F257B"
+        >
+        <TextView
+            android:id="@+id/text"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="Ai ChatBot"
+            android:textSize="24dp"
+            android:textColor="#FDB94B"
+            android:textStyle="italic"
+            />
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/backpress"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="30dp"
+            app:tint="#FDB94B" />
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_marginTop="240dp"
+            android:layout_height="450dp"
+            android:maxHeight="500dp"
+            app:cardCornerRadius="20dp"
+            android:elevation="20dp"
+            app:cardBackgroundColor="#3C1D5D"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text">
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:paddingBottom="100dp"
+                >
+                <TextView
+                    android:id="@+id/ApiResult"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="20dp"
+                    android:text="Your result"
+                    android:textColor="@color/white"
+
+                    android:textStyle="italic"
+                    android:layout_marginHorizontal="10dp"/>
+
+
+
+            </ScrollView>
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:indeterminate="true"/>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/userconstraint"
+        android:layout_width="match_parent"
+
+        android:maxHeight="100dp"
+
+        android:layout_marginTop="50dp"
+        app:layout_constraintTop_toTopOf="parent"
+
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/colour"
+         android:layout_height="wrap_content">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            >
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/userEditText"
+                android:layout_marginVertical="20dp"
+                android:textColor="@color/white"
+                android:background="@null"
+                android:inputType="text"
+                android:textColorHint="#ACB3BF"
+                android:hint="Enter text"
+
+                android:textStyle="italic"
+                android:layout_marginHorizontal="10dp"
+                >
+
+            </EditText>
+
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/sender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="100dp"
+        android:backgroundTint="#3C1D5D"
+        android:textColor="#FDB94B"
+        android:text="Submit"
+        android:layout_marginTop="220dp"/>
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

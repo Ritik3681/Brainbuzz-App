@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "74850813886",
+    "project_id": "aptitude-quiz-app-1b3aa",
+    "storage_bucket": "aptitude-quiz-app-1b3aa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:74850813886:android:2f681f8d62eea996895bef",
+        "android_client_info": {
+          "package_name": "com.example.aptitude"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAH5wRaY18M4FhAuDQx4eCbeRNccK9RfwM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

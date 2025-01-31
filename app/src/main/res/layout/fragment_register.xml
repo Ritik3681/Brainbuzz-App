@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/colour1"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Register">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="124dp"
+        android:background="@drawable/colour2">
+
+
+
+    <TextView
+        android:id="@+id/reg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign up"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="30dp"
+
+        android:textSize="28dp"
+        android:textStyle="bold"/>
+
+
+    <TextView
+        android:id="@+id/regemail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email"
+        app:layout_constraintTop_toBottomOf="@id/reg"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="18dp"
+        android:layout_marginVertical="30dp"
+        android:layout_marginHorizontal="30dp"
+        android:textColor="@color/white"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        app:layout_constraintTop_toBottomOf="@id/regemail"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="30dp"
+        android:id="@+id/constrainemail"
+        android:background="@drawable/colour">
+        <EditText
+            android:id="@+id/EnterEmail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Enter email id"
+            android:background="@null"
+            android:textColorHint="#ACB3BF"
+            android:layout_marginHorizontal="10dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="@color/white"
+            android:singleLine="true"
+
+            android:textSize="18dp"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <TextView
+        android:id="@+id/passw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Password"
+        app:layout_constraintTop_toBottomOf="@id/constrainemail"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="18dp"
+        android:textColor="@color/white"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constarintpassw"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        app:layout_constraintTop_toBottomOf="@id/passw"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/colour"
+        android:layout_marginHorizontal="30dp">
+        <EditText
+            android:id="@+id/EnterPassword"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Enter password"
+            android:background="@null"
+
+           android:layout_marginHorizontal="10dp"
+            android:textColorHint="#ACB3BF"
+            android:textColor="@color/white"
+            android:singleLine="true"
+
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="18dp"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/repeat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Repeat Password"
+        app:layout_constraintTop_toBottomOf="@id/constarintpassw"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="18dp"
+        android:textColor="@color/white"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/confirm"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        app:layout_constraintTop_toBottomOf="@id/repeat"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="30dp"
+        android:background="@drawable/colour">
+        <EditText
+            android:id="@+id/ConfirmPassword"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Enter password"
+            android:layout_marginHorizontal="10dp"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:background="@null"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textColorHint="#ACB3BF"
+            android:textSize="18dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/RegisterButton"
+        android:layout_width="130dp"
+       android:layout_marginEnd="30dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/confirm"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="#FDB94B"
+        android:paddingVertical="6dp"
+        android:padding="10dp"
+        android:text="Sign up"
+        android:textSize="20dp"/>
+        <TextView
+            android:id="@+id/line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/confirm"
+            app:layout_constraintEnd_toStartOf="@id/RegisterButton"
+            android:layout_marginTop="27dp"
+            android:text="/"
+            android:layout_marginEnd="10dp"
+            android:textColor="#ACB3BF"
+            android:textStyle="normal"
+            android:textSize="40dp"
+            />
+
+
+    <Button
+        android:id="@+id/backpessLogin"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@id/confirm"
+       android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toStartOf="@id/line"
+
+        android:text="Login"
+        android:backgroundTint="#FDB94B"
+
+        android:textSize="20dp"/>
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/RegisterButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="50dp"
+            android:textColor="@color/white"
+            android:textSize="12dp"
+            android:text="By creating an account I accept the Company’s "/>
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            android:textColor="#FDB94B"
+            android:textSize="12dp"
+
+            android:text=" Terms of Use and Privacy Policy"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

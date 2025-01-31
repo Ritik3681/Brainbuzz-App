@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/colour1"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".QuestionListFragmnet">
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/backpress"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        app:tint="#FDB94B" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_marginVertical="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:id="@+id/constraint"
+        app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:id="@+id/questionindecator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="Question 7/20"
+            android:textColor="@color/white"
+            android:layout_marginStart="20dp"
+            android:textStyle="bold"
+            android:textSize="20dp"/>
+        <ImageView
+            android:id="@+id/img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:src="@drawable/timer"
+            android:layout_marginEnd="50dp"
+            app:tint="#ACB3BF" />
+        <TextView
+            android:id="@+id/timerindicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/img"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:textColor="#FDB94B"
+            android:text="5:40"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
+        app:layout_constraintTop_toBottomOf="@id/constraint"
+        android:progress="50"
+        android:id="@+id/qize_progress_bar" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/colour4">
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:id="@+id/constraint1"
+        android:layout_height="150dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/colour3"
+        >
+        <TextView
+            android:id="@+id/questionTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+           android:layout_marginStart="30dp"
+            android:layout_marginEnd="20dp"
+            android:textColor="#FDB94B"
+            android:text="What is andriod os?"
+            android:layout_marginVertical="30dp"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
+
+        app:layout_constraintTop_toBottomOf="@id/constraint1">
+      <androidx.constraintlayout.widget.ConstraintLayout
+          android:id="@+id/const1"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          app:layout_constraintStart_toStartOf="parent"
+          android:layout_marginHorizontal="15dp"
+          android:background="@drawable/colour"
+          app:layout_constraintTop_toTopOf="parent">
+          <TextView
+              android:id="@+id/option1"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              app:layout_constraintTop_toTopOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              android:layout_marginVertical="10dp"
+              app:layout_constraintBottom_toBottomOf="parent"
+              android:text="Ans 1"
+              android:layout_marginStart="10dp"
+              android:textColor="@color/white"
+              android:textSize="16dp"
+              />
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/const2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/const1"
+            android:layout_marginVertical="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/colour"
+            android:text="AnsB"
+            android:layout_marginHorizontal="12dp">
+            <TextView
+                android:id="@+id/option2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginVertical="10dp"
+
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="Ans 2"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+
+                android:layout_marginStart="10dp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/const3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/const2"
+            android:layout_marginVertical="20dp"
+            android:background="@drawable/colour"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="Ans A"
+            android:layout_marginHorizontal="12dp">
+            <TextView
+                android:id="@+id/option3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginVertical="10dp"
+
+
+                android:layout_marginStart="10dp"
+                android:text="Ans 3"
+                android:textSize="16dp"
+                android:textColor="@color/white"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/const4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/const3"
+            android:layout_marginVertical="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/colour"
+
+            android:layout_marginHorizontal="12dp"
+            >
+            <TextView
+                android:id="@+id/option4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginVertical="10dp"
+                android:text="Ans 4"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:layout_marginStart="10dp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/nextbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toBottomOf="@id/const4"
+            android:layout_marginVertical="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:backgroundTint="#FDB94B"
+            android:text="Next"
+
+            android:layout_marginHorizontal="10dp"/>
+        <Button
+            android:id="@+id/prevbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toBottomOf="@id/const4"
+            android:layout_marginVertical="20dp"
+            android:layout_marginStart="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:backgroundTint="#FDB94B"
+            android:text="Previous"
+
+            android:layout_marginHorizontal="10dp"/>
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
