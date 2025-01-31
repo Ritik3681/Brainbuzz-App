@@ -11,7 +11,7 @@ import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.lifecycle.lifecycleScope
-import com.example.aptitude.RetrofitInstance.openAIService
+
 import com.google.ai.client.generativeai.GenerativeModel
 
 import kotlinx.coroutines.launch
