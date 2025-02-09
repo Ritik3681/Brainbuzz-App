@@ -1,6 +1,7 @@
 package com.example.aptitude
 
 import android.content.Context
+import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
@@ -10,6 +11,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -27,6 +29,7 @@ class QuizCategoriesFragment : Fragment() {
     private lateinit var progressbar:ProgressBar
     var listener:OnAdvanceClickedListerner?=null
     lateinit var advancebtn:TextView
+    lateinit var youtubeVedio:Button
 
     private lateinit var mAuth: FirebaseAuth
 
@@ -62,6 +65,11 @@ class QuizCategoriesFragment : Fragment() {
         advancebtn=view.findViewById(R.id.advanced)
         advancebtn.setOnClickListener{
             listener?.OnAvancedCleicked()
+        }
+        youtubeVedio=view.findViewById(R.id.youtubeVedio)
+        youtubeVedio.setOnClickListener{
+            val intent = Intent(requireActivity(), YoutudeVedio::class.java)
+            startActivity(intent)
         }
 
     }

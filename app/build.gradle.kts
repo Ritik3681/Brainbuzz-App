@@ -42,6 +42,9 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -68,6 +71,10 @@ dependencies {
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation ("com.squareup.okhttp3:okhttp:4.9.1")
     implementation("com.google.ai.client.generativeai:generativeai:0.7.0")
+    implementation ("com.github.bumptech.glide:glide:4.15.1")
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
+    implementation ("com.google.android.material:material:1.10.0")
 
 
 }
