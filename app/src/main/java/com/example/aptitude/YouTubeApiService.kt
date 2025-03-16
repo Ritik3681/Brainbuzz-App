@@ -16,6 +16,8 @@ interface YouTubeApiService {
         @Query("q") query: String,
         @Query("type") type: String = "video",
         @Query("maxResults") maxResults: Int = 10,
+
+        @Query("pageToken") pageToken: String? = null,
         @Query("key") apiKey: String
     ): YouTubeModels.YouTubeResponse
 

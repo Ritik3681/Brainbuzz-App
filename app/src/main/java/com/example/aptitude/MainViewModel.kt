@@ -8,11 +8,12 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 //AIzaSyAgw2chLlES1i146S6l11AuOxhaFwxwgR8
 class MainViewModel : ViewModel() {
-    private val apiKey = "AIzaSyAgw2chLlES1i146S6l11AuOxhaFwxwgR8"
+    private val apiKey = "AIzaSyCyagzTXXB1tMK7YcIdJyaa_gsXfaSgc4M"
     private val repository = YouTubeRepository(apiKey)
 
     private val _videos = MutableLiveData<List<VideoDataClass>>()
     val videos: LiveData<List<VideoDataClass>> get() = _videos
+
 
     init {
         loadDefaultVideos() // Load BTech-related videos on startup
@@ -35,6 +36,7 @@ class MainViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 val result = repository.searchVideos(query)
+                Log.d("VIEWMODEL", "Fetched ${result.size} videos")
                 if (result.isNotEmpty()) {
                     _videos.postValue(result)
                 }

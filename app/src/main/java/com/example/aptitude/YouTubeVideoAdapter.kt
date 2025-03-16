@@ -26,6 +26,8 @@ class YouTubeVideoAdapter(
         private val publishedDate: TextView = itemView.findViewById(R.id.publishedDate) // New field
 
         fun bind(video: VideoDataClass) {
+            Log.d("BIND_VIDEO", "Title: ${video.title}, Thumbnail: ${video.thumbnailUrl}, Channel: ${video.channelName}")
+
             Glide.with(itemView.context).load(video.thumbnailUrl).into(thumbnail)
             title.text = video.title
             channelName.text = "Channel: ${video.channelName}"

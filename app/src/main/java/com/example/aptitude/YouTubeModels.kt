@@ -2,6 +2,7 @@ package com.example.aptitude
 
 class YouTubeModels {
     data class YouTubeResponse(
+        val nextPageToken: String?,
         val items: List<VideoItem>
     )
 

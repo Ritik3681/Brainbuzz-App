@@ -1,5 +1,6 @@
 package com.example.aptitude
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
@@ -12,10 +13,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
+import androidx.cardview.widget.CardView
+import androidx.compose.material3.AlertDialog
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
@@ -29,7 +33,7 @@ class QuizCategoriesFragment : Fragment() {
     private lateinit var progressbar:ProgressBar
     var listener:OnAdvanceClickedListerner?=null
     lateinit var advancebtn:TextView
-    lateinit var youtubeVedio:Button
+    lateinit var youtubeVedio:CardView
 
     private lateinit var mAuth: FirebaseAuth
 
@@ -68,8 +72,9 @@ class QuizCategoriesFragment : Fragment() {
         }
         youtubeVedio=view.findViewById(R.id.youtubeVedio)
         youtubeVedio.setOnClickListener{
-            val intent = Intent(requireActivity(), YoutudeVedio::class.java)
-            startActivity(intent)
+//            val intent = Intent(requireActivity(), YoutudeVedio::class.java)
+//            startActivity(intent)
+            activity?.let { it1 ->showDialog(it1) }
         }
 
     }
@@ -191,6 +196,39 @@ private fun getDataFromFirebase(view: View) {
         fragmentManager.beginTransaction()
             .replace(R.id.fragment, Login()) // Use the correct container ID
             .commit()
+    }
+
+
+    fun showDialog(activity: Activity){
+        val builder= android.app.AlertDialog.Builder(activity)
+        val coustomView=LayoutInflater.from(activity).inflate(
+            R.layout.youtudelayout,null,
+
+        )
+        builder.setView(coustomView)
+        val dialog=builder.create()
+        val editText=coustomView.findViewById<EditText>(R.id.query)
+        val searchButton=coustomView.findViewById<Button>(R.id.finish)
+
+        searchButton.setOnClickListener {
+            val query = editText.text.toString().trim()
+            if (query.isNotEmpty()) {
+                val intent = Intent(Intent.ACTION_SEARCH)
+                intent.setPackage("com.google.android.youtube")
+                intent.putExtra("query", query)
+                activity.startActivity(intent)
+
+                dialog.dismiss()
+
+            } else {
+                Toast.makeText(activity, "Please enter a topic", Toast.LENGTH_SHORT).show()
+            }
+        }
+        dialog.show()
+
+
+
+
     }
 
     interface OnAdvanceClickedListerner{

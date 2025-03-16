@@ -1,18 +1,9 @@
 package com.example.aptitude
 
-import android.content.Context
 import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-//https://www.googleapis.com/youtube/v3/
-
-
-
-
-
 
 class YouTubeRepository(private val apiKey: String) {
     private val apiService = YouTubeApiService.create()
@@ -22,37 +13,53 @@ class YouTubeRepository(private val apiKey: String) {
             try {
                 Log.d("REPO_CALL", "Fetching data for: $query")
 
-                // Search for videos
-                val searchResponse = apiService.searchVideos(query = query, apiKey = apiKey)
-                val videoItems = searchResponse.items
+                // ✅ Direct API Test URL
+                val testUrl = "https://www.googleapis.com/youtube/v3/videos?part=snippet&id=Ks-_Mh1QhMc&key=$apiKey"
+                Log.e("API_TEST", "Testing API with URL: $testUrl")
 
-                if (videoItems.isEmpty()) {
-                    Log.d("REPO_CALL", "No videos found for: $query")
-                    return@withContext emptyList()
-                }
+                val allVideos = mutableListOf<VideoDataClass>()
+                var nextPageToken: String? = null
 
-                // Extract video IDs
-                val videoIds = videoItems.joinToString(",") { it.id.videoId }
-
-                // Fetch statistics for these videos
-                val statsResponse = apiService.getVideoDetails(videoIds = videoIds, apiKey = apiKey)
-                val statsMap = statsResponse.items.associateBy { it.id }
-
-                // Map response to VideoDataClass
-                val videoList = videoItems.map { video ->
-                    val statistics = statsMap[video.id.videoId]?.statistics
-                    VideoDataClass(
-                        videoId = video.id.videoId,
-                        title = video.snippet.title,
-                        thumbnailUrl = video.snippet.thumbnails.medium.url,
-                        channelName = video.snippet.channelTitle ?: "Unknown Channel", // Channel name
-                        viewCount = formatViewCount(statistics?.viewCount), // View count
-                        publishedAt = video.snippet.publishedAt // Published date
+                do {
+                    val searchResponse = apiService.searchVideos(
+                        query = query,
+                        apiKey = apiKey,
+                        pageToken = nextPageToken
                     )
-                }
+                    Log.d("API_RESPONSE", "Raw Response: $searchResponse")
+                    val videoItems = searchResponse.items
 
-                Log.d("REPO_CALL", "Fetched ${videoList.size} videos successfully.")
-                videoList
+                    if (videoItems.isEmpty()) {
+                        Log.d("REPO_CALL", "No videos found for: $query")
+                        break
+                    }
+
+                    val videoIds = videoItems.joinToString(",") { it.id.videoId }
+
+                    val statsResponse = apiService.getVideoDetails(videoIds = videoIds, apiKey = apiKey)
+                    val statsMap = statsResponse.items.associateBy { it.id }
+
+                    val videoList = videoItems.mapNotNull { video ->
+                        val statistics = statsMap[video.id.videoId]?.statistics
+                        val viewCount = statistics?.viewCount?.toLongOrNull() ?: return@mapNotNull null
+
+                        VideoDataClass(
+                            videoId = video.id.videoId,
+                            title = video.snippet.title,
+                            thumbnailUrl = video.snippet.thumbnails.medium.url,
+                            channelName = video.snippet.channelTitle ?: "Unknown Channel",
+                            viewCount = formatViewCount(viewCount.toString()),
+                            publishedAt = video.snippet.publishedAt
+                        )
+                    }
+
+                    allVideos.addAll(videoList)
+                    nextPageToken = searchResponse.nextPageToken
+
+                } while (!nextPageToken.isNullOrEmpty())
+
+                Log.d("REPO_CALL", "Fetched ${allVideos.size} videos successfully.")
+                return@withContext allVideos
             } catch (e: HttpException) {
                 Log.e("API_ERROR", "HTTP Error Code: ${e.code()} | Response: ${e.response()?.errorBody()?.string()}")
                 emptyList()
@@ -62,20 +69,18 @@ class YouTubeRepository(private val apiKey: String) {
             }
         }
     }
+
     private fun formatViewCount(count: String?): String {
         return try {
             val num = count?.toLongOrNull() ?: 0
             when {
-                num >= 1_000_000_000 -> String.format("%.1fB", num / 1_000_000_000.0) // Billions
-                num >= 1_000_000 -> String.format("%.1fM", num / 1_000_000.0) // Millions
-                num >= 1_000 -> String.format("%.1fK", num / 1_000.0) // Thousands
-                else -> num.toString() // Keep small numbers as-is
+                num >= 1_000_000_000 -> String.format("%.1fB", num / 1_000_000_000.0)
+                num >= 1_000_000 -> String.format("%.1fM", num / 1_000_000.0)
+                num >= 1_000 -> String.format("%.1fK", num / 1_000.0)
+                else -> num.toString()
             }
         } catch (e: NumberFormatException) {
             "0"
         }
     }
 }
-
-
-
