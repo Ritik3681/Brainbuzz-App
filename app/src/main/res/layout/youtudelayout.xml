@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="331dp"
+
+    android:layout_height="500dp"
+    android:background="@drawable/round_corner"
+
+
+    >
+
+
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/enterQuery"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="48dp"
+        android:background="@drawable/colour"
+        android:layout_marginHorizontal="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+        <EditText
+            android:id="@+id/query"
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:textColorHint="#ACB3BF"
+            android:hint="Enter your topic"
+            android:textColor="@color/white"
+            android:singleLine="true"
+            android:background="@null"
+            android:layout_marginHorizontal="10dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="18dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+
+
+    <Button
+        android:id="@+id/finish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="20dp"
+        android:backgroundTint="#FDB94B"
+        android:text="Search Topic"
+
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/enterQuery"
+        />
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
