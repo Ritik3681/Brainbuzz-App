@@ -1,5 +1,6 @@
 package com.example.aptitude
 
+import android.app.Activity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -19,6 +20,7 @@ import kotlinx.coroutines.runBlocking
 
 
 class ChatFragment : Fragment() {
+    lateinit var backpress:ImageView
 
 
 
@@ -38,7 +40,7 @@ class ChatFragment : Fragment() {
     ): View? {
 
 
-        // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_chat, container, false )
     }
 
@@ -48,6 +50,10 @@ class ChatFragment : Fragment() {
         val btnSumbit=view.findViewById<Button>(R.id.sender)
         val apiResult=view.findViewById<TextView>(R.id.ApiResult)
         val progressBar=view.findViewById<ProgressBar>(R.id.progressBar)
+        backpress=view.findViewById(R.id.backpress)
+        backpress.setOnClickListener{
+
+        }
 
 //        btnSumbit.setOnClickListener{
 //            val result=userText.text.toString()
@@ -66,9 +72,9 @@ class ChatFragment : Fragment() {
 //        }
         btnSumbit.setOnClickListener {
             val query = userText.text.toString()
-            progressBar.visibility = View.VISIBLE // Show progress bar
+            progressBar.visibility = View.VISIBLE
 
-            // Launch coroutine to perform API call
+
             lifecycleScope.launch {
                 try {
 
@@ -86,7 +92,7 @@ class ChatFragment : Fragment() {
 
                     apiResult.text = "Error: ${e.message}"
                 } finally {
-                    progressBar.visibility = View.GONE // Hide progress bar
+                    progressBar.visibility = View.GONE
                 }
             }
         }

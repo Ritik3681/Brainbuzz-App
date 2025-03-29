@@ -33,6 +33,8 @@ class QuizCategoriesFragment : Fragment() {
     var listener:OnAdvanceClickedListerner?=null
     lateinit var advancebtn:TextView
     lateinit var youtubeVedio: CardView
+    lateinit var resumeAnalyzer:CardView
+    var resumeListener:OnResumeAnalyzerClicked?=null
 
     private lateinit var mAuth: FirebaseAuth
 
@@ -75,6 +77,10 @@ class QuizCategoriesFragment : Fragment() {
 //            startActivity(intent)
             activity?.let { it1 ->showDialog(it1) }
         }
+        resumeAnalyzer=view.findViewById(R.id.resume_Analysis)
+        resumeAnalyzer.setOnClickListener{
+            resumeListener?.OnResumeAnalyzer()
+        }
 
     }
 
@@ -116,6 +122,7 @@ class QuizCategoriesFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         listener=context as OnAdvanceClickedListerner
+        resumeListener= context as OnResumeAnalyzerClicked
     }
 
     private fun setUpRecyclerview() {
@@ -222,17 +229,18 @@ private fun getDataFromFirebase(view: View) {
     }
 
     private fun logoutUser() {
-        // Sign out the user from Firebase
         mAuth .signOut()
 
-        // Navigate back to the LoginFragment
         val fragmentManager = parentFragmentManager
         fragmentManager.beginTransaction()
-            .replace(R.id.fragment, Login()) // Use the correct container ID
+            .replace(R.id.fragment, Login())
             .commit()
     }
 
     interface OnAdvanceClickedListerner{
         fun OnAvancedCleicked()
+    }
+    interface OnResumeAnalyzerClicked{
+        fun OnResumeAnalyzer()
     }
 }

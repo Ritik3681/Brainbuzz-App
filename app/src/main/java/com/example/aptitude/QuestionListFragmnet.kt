@@ -85,7 +85,7 @@ class QuestionListFragmnet : Fragment(), View.OnClickListener {
             }
 
             override fun onFinish() {
-                // Handle what happens when the timer finishes
+
             }
         }.start()
     }
@@ -134,7 +134,6 @@ class QuestionListFragmnet : Fragment(), View.OnClickListener {
 
             }
             R.id.nextbtn -> {
-                // Save the current answer to userAnswers when moving forward
                 if (currentQuestionIndex < userAnswers.size) {
                     userAnswers[currentQuestionIndex] = selectedAnswer
                 } else {
@@ -145,12 +144,10 @@ class QuestionListFragmnet : Fragment(), View.OnClickListener {
                     }
                 }
 
-                // Update score based on the selected answer
                 if (currentQuestionIndex < questionModelist.size && selectedAnswer == questionModelist[currentQuestionIndex].Correct) {
                     score++
                 }
 
-                // Move to the next question
                 currentQuestionIndex++
                 loadQuestion()
                 highlightPreviousSelectedOption()
@@ -158,18 +155,15 @@ class QuestionListFragmnet : Fragment(), View.OnClickListener {
 
             R.id.prevbtn -> {
                 if (currentQuestionIndex > 0) {
-                    // Save the answer for the current question before moving backward
                     if (currentQuestionIndex < userAnswers.size) {
                         userAnswers[currentQuestionIndex] = selectedAnswer
                     } else {
                         userAnswers.add(selectedAnswer)
                     }
 
-                    // Move to the previous question
                     currentQuestionIndex--
                     loadQuestion()
 
-                    // Restore the previously selected answer if available
                     selectedAnswer = if (currentQuestionIndex < userAnswers.size) {
                         userAnswers[currentQuestionIndex]
                     } else {
@@ -250,11 +244,9 @@ class QuestionListFragmnet : Fragment(), View.OnClickListener {
 
     @SuppressLint("ResourceAsColor")
     private fun highlightSelectedOption(selectedButton: TextView) {
-        // Reset the background of all options first
         resetOptionBackgrounds()
 
 
-        // Set the background of the selected option
 //        selectedButton.setBackgroundColor(R.color.nwdf)
         selectedButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.nwdf))
     }
@@ -275,10 +267,8 @@ class QuestionListFragmnet : Fragment(), View.OnClickListener {
 
 
     private fun highlightPreviousSelectedOption() {
-        // Reset the background of all options first
         resetOptionBackgrounds()
 
-        // Highlight the previously selected answer
         when (selectedAnswer) {
             binding.option1.text.toString() -> binding.option1.setTextColor(ContextCompat.getColor(requireContext(), R.color.nwdf))
             binding.option2.text.toString() -> binding.option2.setTextColor(ContextCompat.getColor(requireContext(), R.color.nwdf))

@@ -28,15 +28,15 @@ class ResultFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+
         binding = FragmentResultBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val questionList = QuestionListFragmnet.questionModelist // Get the question list
-        val userAnswers = getArguments()?.getStringArrayList("userAnswers") // Get the user's answers passed from the quiz fragment
+        val questionList = QuestionListFragmnet.questionModelist
+        val userAnswers = getArguments()?.getStringArrayList("userAnswers")
 
 
         resultAdapter = ResultAdapter(questionList, userAnswers)
@@ -51,10 +51,9 @@ class ResultFragment : Fragment() {
     }
 
     private fun navigateToMainFragment() {
-        val loginFragment = QuizCategoriesFragment() // Create an instance of the LoginFragment
+        val loginFragment = QuizCategoriesFragment()
         val transaction = requireActivity().supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.fragment, loginFragment) // Replace the current fragment
-        // Optional: add to back stack so the user can navigate back
+        transaction.replace(R.id.fragment, loginFragment)
         transaction.commit()
     }
 

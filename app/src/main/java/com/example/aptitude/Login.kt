@@ -120,24 +120,24 @@ class Login : Fragment() {
             return
         }
 
-        // Authenticate user
+
 
     }
 
 
     private fun navigateToMainFragment() {
-        val loginFragment = QuizCategoriesFragment() // Create an instance of the LoginFragment
+        val loginFragment = QuizCategoriesFragment()
         val transaction = requireActivity().supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.fragment, loginFragment) // Replace the current fragment
-        // Optional: add to back stack so the user can navigate back
+        transaction.replace(R.id.fragment, loginFragment)
+
         transaction.commit()
     }
 
     private fun navigateToLoginFragment() {
-        val loginFragment = Login() // Create an instance of the LoginFragment
+        val loginFragment = Login()
         val transaction = requireActivity().supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.fragment, loginFragment) // Replace the current fragment
-        transaction.addToBackStack(null) // Optional: add to back stack so the user can navigate back
+        transaction.replace(R.id.fragment, loginFragment)
+        transaction.addToBackStack(null)
         transaction.commit()
     }
 
@@ -147,7 +147,6 @@ class Login : Fragment() {
 
         val currentUser = auth.currentUser
         if (currentUser != null) {
-            // User is signed in, navigate to the main fragment or activity
             navigateToMainFragment()
         }
     }

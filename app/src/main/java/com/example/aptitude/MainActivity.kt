@@ -7,7 +7,7 @@ import androidx.core.content.ContextCompat
 
 class MainActivity : AppCompatActivity() ,Login.OnRegisterClickedListener,
         Login.OnQuizeCategoriesClickedlistener,Register.OnRegisterClickedListener,
-        QuizCategoriesFragment.OnAdvanceClickedListerner
+        QuizCategoriesFragment.OnAdvanceClickedListerner,QuizCategoriesFragment.OnResumeAnalyzerClicked
 
 
 {
@@ -68,6 +68,13 @@ class MainActivity : AppCompatActivity() ,Login.OnRegisterClickedListener,
         fragmentTransaction.replace(R.id.fragment,nfragment).commit()
 
     }
+    fun ResumeAnalyzerFragemnt(){
+        val nfragment=ResumeAnalysisFragment()
+        val fragmentManager=supportFragmentManager
+        val fragmentTransaction=fragmentManager.beginTransaction()
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.replace(R.id.fragment,nfragment).commit()
+    }
 
 
 
@@ -91,6 +98,10 @@ class MainActivity : AppCompatActivity() ,Login.OnRegisterClickedListener,
     }
     override fun OnAvancedCleicked(){
         chatFragment()
+    }
+
+    override fun OnResumeAnalyzer() {
+        ResumeAnalyzerFragemnt()
     }
 
 

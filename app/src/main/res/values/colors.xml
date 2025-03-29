@@ -10,5 +10,11 @@
     <color name="nwdfx1">#202038</color>
     <color name="nwdf">#127316</color>
     <color name="Red">@color/nwdfx</color>
+    <color name="light_purple">#FDB94B</color>  <!-- Background -->
+    <color name="dark_purple">#512DA8</color>  <!-- Button & Text -->
+    <color name="deep_purple">#673AB7</color>
+
+    <!-- Analysis Button -->
+
 
 </resources>

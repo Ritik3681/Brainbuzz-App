@@ -26,7 +26,7 @@ class Register : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        auth = FirebaseAuth.getInstance() // Initialize FirebaseAuth
+        auth = FirebaseAuth.getInstance()
     }
 
     override fun onCreateView(
@@ -81,13 +81,11 @@ class Register : Fragment() {
         auth.createUserWithEmailAndPassword(emailText, passwordText)
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
                     val user: FirebaseUser? = auth.currentUser
                     Toast.makeText(activity, "Registration Success.", Toast.LENGTH_SHORT).show()
                     sendVerificationEmail()
                     navigateToLoginFragment()
                 } else {
-                    // If sign in fails, display a message to the user.
                     Toast.makeText(activity, "Registration Failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
             }
@@ -95,12 +93,12 @@ class Register : Fragment() {
 
     private fun navigateToLoginFragment() {
         
-            val homeFragment = Login() // Create an instance of the new fragment
+            val homeFragment = Login()
             val transaction = requireActivity().supportFragmentManager.beginTransaction()
 
-            transaction.replace(R.id.fragment, homeFragment) // Replace the current fragment
-            transaction.addToBackStack(null) // Optional: add to back stack if you want to navigate back
-            transaction.commit() // Commit the transaction
+            transaction.replace(R.id.fragment, homeFragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
         
     }
 
@@ -111,7 +109,7 @@ class Register : Fragment() {
             ?.addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
                     Toast.makeText(activity, "Verification email sent. Please verify your email.", Toast.LENGTH_LONG).show()
-                    auth.signOut() // Sign out the user after sending the verification email
+                    auth.signOut()
                     navigateToLoginFragment()
                 } else {
                     Toast.makeText(activity, "Failed to send verification email.", Toast.LENGTH_SHORT).show()
