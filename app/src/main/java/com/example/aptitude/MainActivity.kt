@@ -7,7 +7,8 @@ import androidx.core.content.ContextCompat
 
 class MainActivity : AppCompatActivity() ,Login.OnRegisterClickedListener,
         Login.OnQuizeCategoriesClickedlistener,Register.OnRegisterClickedListener,
-        QuizCategoriesFragment.OnAdvanceClickedListerner,QuizCategoriesFragment.OnResumeAnalyzerClicked
+        QuizCategoriesFragment.OnAdvanceClickedListerner,QuizCategoriesFragment.OnResumeAnalyzerClicked,
+        QuizCategoriesFragment.OnAiInterviewListerner
 
 
 {
@@ -75,6 +76,13 @@ class MainActivity : AppCompatActivity() ,Login.OnRegisterClickedListener,
         fragmentTransaction.addToBackStack(null)
         fragmentTransaction.replace(R.id.fragment,nfragment).commit()
     }
+    fun AI_InterviewFragment(){
+        val nfragment=Ai_Interview_Fragment()
+        val fragmentManager=supportFragmentManager
+        val fragmentTransaction=fragmentManager.beginTransaction()
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.replace(R.id.fragment,nfragment).commit()
+    }
 
 
 
@@ -82,9 +90,7 @@ class MainActivity : AppCompatActivity() ,Login.OnRegisterClickedListener,
 
 
 
-
-
-   override fun  OnRegisterClicked(){
+    override fun  OnRegisterClicked(){
        registerFragment()
 
 
@@ -102,6 +108,11 @@ class MainActivity : AppCompatActivity() ,Login.OnRegisterClickedListener,
 
     override fun OnResumeAnalyzer() {
         ResumeAnalyzerFragemnt()
+    }
+
+    override fun OnAiInterviewClicked() {
+        Log.d("ai", "OnAiInterviewClicked: OnAiInterviewClicked ")
+       AI_InterviewFragment()
     }
 
 

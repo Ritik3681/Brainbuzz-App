@@ -35,6 +35,8 @@ class QuizCategoriesFragment : Fragment() {
     lateinit var youtubeVedio: CardView
     lateinit var resumeAnalyzer:CardView
     var resumeListener:OnResumeAnalyzerClicked?=null
+    var aiListener:OnAiInterviewListerner?=null
+    lateinit var Ai_Interview:CardView
 
     private lateinit var mAuth: FirebaseAuth
 
@@ -81,6 +83,11 @@ class QuizCategoriesFragment : Fragment() {
         resumeAnalyzer.setOnClickListener{
             resumeListener?.OnResumeAnalyzer()
         }
+        Ai_Interview=view.findViewById(R.id.Ai_Interview11)
+        Ai_Interview.setOnClickListener{
+            Log.d("ai", "OnAiInterviewClicked: OnAiInterviewClicked11 ")
+            aiListener?.OnAiInterviewClicked()
+        }
 
     }
 
@@ -123,6 +130,7 @@ class QuizCategoriesFragment : Fragment() {
         super.onAttach(context)
         listener=context as OnAdvanceClickedListerner
         resumeListener= context as OnResumeAnalyzerClicked
+        aiListener=context as OnAiInterviewListerner
     }
 
     private fun setUpRecyclerview() {
@@ -242,5 +250,9 @@ private fun getDataFromFirebase(view: View) {
     }
     interface OnResumeAnalyzerClicked{
         fun OnResumeAnalyzer()
+    }
+    interface OnAiInterviewListerner{
+
+        fun OnAiInterviewClicked()
     }
 }

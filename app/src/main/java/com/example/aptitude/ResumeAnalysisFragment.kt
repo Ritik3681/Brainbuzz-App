@@ -172,7 +172,9 @@ class ResumeAnalysisFragment : Fragment() {
                     Log.w("ResumeAnalysis", "No text found, trying OCR...")
                     val bitmap = convertPdfToImage(pdfUri)
                     if (bitmap != null) {
-                        extractTextFromImage(bitmap) // Use OCR
+                        extractTextFromImage(bitmap)
+                        Log.d("ResumeAnalysis1111", "Bitmap width: ${bitmap.width}, height: ${bitmap.height}")
+
                     } else {
                         extractedTextTextView.text = "No text found and OCR failed."
                     }
@@ -205,14 +207,18 @@ class ResumeAnalysisFragment : Fragment() {
     }
 
     private fun extractTextFromImage(bitmap: Bitmap) {
+        Log.d("ResumeAnalysis1111", "Bitmap width: ${bitmap.width}, height: ${bitmap.height}")
+
         val image = InputImage.fromBitmap(bitmap, 0)
         val recognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
 
         recognizer.process(image)
             .addOnSuccessListener { visionText ->
                 val extractedText = visionText.text
+                Log.d("ResumeAnalysis1111", "Filtered Resume Details: $extractedText")
+
                 val filteredText = filterResumeDetails(extractedText) // Extract only needed details
-                Log.d("ResumeAnalysis", "Filtered Resume Details: $filteredText")
+                Log.d("ResumeAnalysis1111", "Filtered Resume Details: $filteredText")
                 analyzeResume(filteredText)
 
             }
@@ -222,6 +228,7 @@ class ResumeAnalysisFragment : Fragment() {
     }
 
     private fun filterResumeDetails(text: String): String {
+        Log.d("ResumeAnalysis1111", "Filtered Resume Details: $text")
         val experienceRegex = "(?i)INTERNSHIP(.*?)(?=(PROJECTS|TECHNICAL SKILLS|EDUCATION|$))".toRegex(RegexOption.DOT_MATCHES_ALL)
         val projectsRegex = "(?i)PROJECTS(.*?)(?=(TECHNICAL SKILLS|EDUCATION|$))".toRegex(RegexOption.DOT_MATCHES_ALL)
         val skillsRegex = "(?i)TECHNICAL SKILLS(.*?)(?=(EDUCATION|$))".toRegex(RegexOption.DOT_MATCHES_ALL)
@@ -234,41 +241,46 @@ class ResumeAnalysisFragment : Fragment() {
 
         return "$experience\n\n$projects\n\n$skills\n\n$education"
     }
-    private fun analyzeResume(result:String) {
+    private fun analyzeResume(result: String) {
         progressBar.visibility = View.VISIBLE
         extractedTextTextView.text = "Analyzing..."
 
+        Log.d("analyzeResume", "Starting analysis with extracted result:")
+        Log.d("analyzeResume", "Resume Data:\n$result")
+
         lifecycleScope.launch {
             try {
+                val prompt = """
+                Based on the following resume details, generate 20 relevant interview questions tailored to the candidate's skills, experience, and job role:
+
+                Resume Details:
+                $result
+
+                The questions should focus on the candidate's technical expertise, past projects, problem-solving skills, and role-specific knowledge.
+            """.trimIndent()
+
+                Log.d("analyzeResume", "Prompt sent to Gemini:\n$prompt")
+
                 val generativeModel = GenerativeModel(
                     modelName = "gemini-2.0-flash",
                     apiKey = "AIzaSyC_1z6kwYKKaPdP2wuEXeO94Mi4JzfVnAg"
                 )
 
-                val response = generativeModel.generateContent(
-                    """
-    Based on the following resume details, generate 20 relevant interview questions tailored to the candidate's skills, experience, and job role:
+                val response = generativeModel.generateContent(prompt)
 
-    Resume Details:
-    $result
-
-    The questions should focus on the candidate's technical expertise, past projects, problem-solving skills, and role-specific knowledge.
-
-    Do not include any special characters like *, #, $, etc. Just provide the plain interview questions.
-
-    Ensure there is a blank line between each question.
-    """.trimIndent()
-                )
+                Log.d("analyzeResume", "Gemini Response: ${response.text}")
 
                 interviewQuestions = response.text
-                resume_Answer.visibility=View.VISIBLE
+                resume_Answer.visibility = View.VISIBLE
                 extractedTextTextView.text = response.text
-                Log.d("ResumeAnalysis", "OCR Extracted Text: $response")
+
             } catch (e: Exception) {
+                Log.e("analyzeResume", "Error while analyzing resume", e)
                 extractedTextTextView.text = "Analysis failed: ${e.message}"
             } finally {
                 progressBar.visibility = View.GONE
             }
         }
     }
+
 }
