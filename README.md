@@ -15,10 +15,10 @@ With an AI chatbot, BrainBuzz allows users to ask questions and get instant resp
 ✅ **User Progress Tracking** – Monitors user performance and provides insights into strengths and weaknesses.  
 ✅ **Bookmark & Review** – Users can save questions for later review and revisit incorrect answers.  
 ✅ **Dark Mode Support** – Provides a comfortable learning experience during nighttime.  
-✅ **AI Resume Analysis** – Analyzes uploaded resumes and automatically generates relevant interview questions based on the candidate's profile.
-✅ **AI Mock Interview** – Simulates interview sessions with AI to help users practice and receive feedback on their responses.
 ✅ **Offline Mode** – Allows users to access previously attempted quizzes without an internet connection.  
 ✅ **Interactive UI & Smooth Navigation** – Built with `ConstraintLayout` and `RecyclerView` for an intuitive user experience.
+✅ **AI Resume Analysis** – Analyzes uploaded resumes and automatically generates relevant interview questions based on the candidate's profile.
+✅ **AI Mock Interview** – Simulates interview sessions with AI to help users practice and receive feedback on their responses.
 
 ---
 
