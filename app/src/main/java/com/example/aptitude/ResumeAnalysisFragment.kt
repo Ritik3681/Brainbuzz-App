@@ -167,7 +167,9 @@ class ResumeAnalysisFragment : Fragment() {
 
                 if (text.isNotEmpty()) {
                     extractedTextTextView.text = text
+                    analyzeResume(text)
                     Log.d("ResumeAnalysis", "Extracted Text: $text")
+
                 } else {
                     Log.w("ResumeAnalysis", "No text found, trying OCR...")
                     val bitmap = convertPdfToImage(pdfUri)
@@ -254,9 +256,13 @@ class ResumeAnalysisFragment : Fragment() {
                 Based on the following resume details, generate 20 relevant interview questions tailored to the candidate's skills, experience, and job role:
 
                 Resume Details:
+                
                 $result
 
                 The questions should focus on the candidate's technical expertise, past projects, problem-solving skills, and role-specific knowledge.
+                
+                and do not this character like #,%,* & Etc in the output 
+                
             """.trimIndent()
 
                 Log.d("analyzeResume", "Prompt sent to Gemini:\n$prompt")
